@@ -1,9 +1,10 @@
 //import org.apache.hive._
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
+import org.joda.time.DateTime
 object firstFilter {
 
-  case class Customer(Id:Int,CustomerName:String,ProductID:Int,ProductName:String,ProductPrice:Int,qty:Int,payType:String,validPay:String,date:String,newCountries:String)
+  case class Customer(Id:Int, CustomerName:String, ProductID:Int, ProductName:String, ProductPrice:Int, Qty:Int, PayType:String, Valid:String, DatePurchased:DateTime, Country:String)
   def main(args: Array[String]): Unit ={
 
     // Set the log level to only print errors
