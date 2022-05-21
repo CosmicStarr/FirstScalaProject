@@ -37,7 +37,6 @@ object generator {
       val newDate = LocalDate.ofEpochDay(Random.between(start.toEpochDay, end.toEpochDay))
       val newCountries = countries(Random.nextInt(countries.length))
       //The actually Tuple that will create the csv data
-      println("Id","CustomerName","ProductID","ProductName","ProductPrice","Qty","PayType","Valid","DatePurchased","Country")
       val dataSet = Tuple1(newIDs, newNames, newProductIDs, newProductNames,newPrice,
         newQty, newPayType, validPay, newDate,newCountries)
       val info = dataSet.productIterator.distinct
