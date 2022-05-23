@@ -3,21 +3,26 @@ import scala.util.Random
 
 object generator {
   def main(args: Array[String]): Unit ={
-//    println("OrderId","CusId","CustomerName","ProductID","ProductName","ProductPrice","Qty","PayType","Valid","DatePurchased","Country","Website")
+    println("OrderId","CusId","CustomerName","ProductID","ProductName","Category","ProductPrice","Qty","PayType","Valid","DatePurchased","Country","Website")
     var generate = 0
-    while (generate < 5000){
+    while (generate < 5){
       val orderId = 1 to 10000
-      val productId = 10000 to 30000
-      val productPrice = 299 to 1299
+//      val productId = 10000 to 30000
+//      val productPrice = 299 to 1299
       val qty = 1 to 2
       val start = LocalDate.of(2019, 1, 20)
       val end   = LocalDate.of(2022, 6, 24)
       val webSites = List("www.Amazon.com","www.Wal-Mart.com","www.Samsung.com")
       val valid = List("Invalid","Valid")
-      val productNames = List("Samsung Tablet","S21 cell phone","Sony Desktop","Dell Computer","Sony Speakers","Sony Phone","IPhone 13","Beats Headphones",
-      "Sony Headphones","Sony Home theater","Hp Compaq Monitor","Xbox Series X","Sony PlayStation 5","Xbox Series S","Tozo Wireless Earbubs","Airpods",
-      "Sony External Hard drive","Sony Router","Sony FlatScreen TV","Sony PlayStation 4","S22 cell phone","IPhone 14","Vizio TV","PlayStation Controller",
-        "Xbox Controller","Optiplex 990 Desktop","Samsung Refrigerator","Whirlpool dishwasher","Samsung Washer","Samsung Dryer")
+      val productNames = List((1,"Samsung Tablet","Tablets",299),(2,"S21 cell phone","Phones",1299),(3,"Sony Desktop","Computers",599),
+        (4,"Dell Computer","Computers",599),(5,"Sony Speakers","Audio",299),(6,"Sony Phone","Phones",1199),(7,"IPhone 13","Phones",1299),(8,"Beats Headphones","Headphones",399),
+      (9,"Sony Headphones","Headphones",399),(10,"Sony Home theater","Home theater",499),(11,"Hp Compaq Monitor","Computers",499),(12,"Xbox Series X","Video games",599),
+        (13,"Sony PlayStation 5","Video games",499),(14,"Xbox Series S","Video games",499),(15,"Tozo Wireless Earbubs","Headphones",29),(16,"Airpods","Headphones",199),
+      (17,"Sony External Hard drive","Computers",99),(18,"Sony Router","Computers",99),(19,"Sony FlatScreen TV","TV's",1199),(20,"Sony PlayStation 4","Video games",299),
+        (21,"S22 cell phone","Phones",1299),(22,"IPhone 14","Phones",1299),(23,"Vizio TV","TV's",199),(24,"PlayStation Controller","Video games",49),
+        (25,"Xbox Controller","Video games",49),(26,"Optiplex 990 Desktop","Computers",499),(27,"Samsung Refrigerator","Appliances",599),(28,"Whirlpool dishwasher","Appliances",799),
+        (29,"Samsung Washer","Appliances",799),(30,"Samsung Dryer","Appliances",799),(31,"Maytag Washer","Appliances",899),(32,"Samsung Stove","Appliances",699),
+        (33,"Hamilton Beach Microwave","Appliances",79))
       val paymentType = List("Card", "Check", "Internet Banking")
       val customerNames = List((1,"Normand Michel"), (2,"Danny hue"), (3,"Jerry Jean"),
        (4,"Ken Masters"), (5,"Micheal Gus"), (6,"Michelle Otter"), (7,"Morgan Freeman"), (8,"Sherrell Lattes"),
@@ -39,9 +44,9 @@ object generator {
       //the tuple fields i can actually create a match method
       val newIDs = orderId(Random.nextInt(orderId.length))
       val newNames = customerNames(Random.nextInt(customerNames.length))
-      val newProductIDs = productId(Random.nextInt(productId.length))
+//      val newProductIDs = productId(Random.nextInt(productId.length))
       val newProductNames = productNames(Random.nextInt(productNames.length))
-      val newPrice = productPrice(Random.nextInt(productPrice.length))
+//      val newPrice = productPrice(Random.nextInt(productPrice.length))
       val newQty = qty(Random.nextInt(qty.length))
       val newPayType = paymentType(Random.nextInt(paymentType.length))
       val validPay = valid(Random.nextInt(valid.length))
@@ -49,7 +54,7 @@ object generator {
       val newDate = LocalDate.ofEpochDay(Random.between(start.toEpochDay, end.toEpochDay))
       val newCountries = countries(Random.nextInt(countries.length))
       //The actually Tuple that will create the csv data
-      val dataSet = Tuple1(newIDs,newNames, newProductIDs, newProductNames,newPrice,
+      val dataSet = Tuple1(newIDs,newNames, newProductNames,
         newQty, newPayType, validPay, newDate,newCountries,newWebSite)
       val info = dataSet.productIterator.distinct
        info.foreach(i => println(i))
