@@ -1,10 +1,10 @@
 //import org.apache.hive._
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
-import org.joda.time.DateTime
 object firstFilter {
 
-  case class Customer(Id:Int, CustomerName:String, ProductID:Int, ProductName:String, ProductPrice:Int, Qty:Int, PayType:String, Valid:String, DatePurchased:DateTime, Country:String)
+  case class Customer(OrderId:Int,CusId:Int,CustomerName:String,ProductID:Int,ProductName:String,ProductPrice:Int,Qty:Double,
+                      PayType:String,Valid:String,DatePurchased:String,Country:String,Website:String)
   def main(args: Array[String]): Unit ={
 
     // Set the log level to only print errors
@@ -25,7 +25,7 @@ object firstFilter {
       .csv("Data/Project1.csv")
       .as[Customer]
 
-//    schemaPeople.printSchema()
+    schemaPeople.printSchema()
 
     schemaPeople.createOrReplaceTempView("people")
 //    val teenagers = spark.sql("SELECT * FROM people WHERE age >= 13 AND age <= 19")
