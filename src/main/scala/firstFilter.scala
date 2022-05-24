@@ -3,7 +3,7 @@ import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
 object firstFilter {
 
-  case class Customer(OrderId:Int,CusId:Int,CustomerName:String,ProductName:String,ProductPrice:Int,Qty:Double,
+  case class Customer(OrderId:Int,CusId:Int,CustomerName:String,ProductName:String,Category:String,ProductPrice:Int,Qty:Double,
                       PayType:String,Valid:String,DatePurchased:String,Country:String,Website:String)
   def main(args: Array[String]): Unit ={
 
@@ -28,7 +28,12 @@ object firstFilter {
     schemaPeople.printSchema()
 
     schemaPeople.createOrReplaceTempView("people")
-    val filteredPeople = spark.sql("SELECT * FROM people WHERE ProductPrice = 599")
+    val filteredPeople =  spark.sql("SELECT count(ProductName),max(ProductName),Country FROM people as purchases GROUP BY Country")
+
+//    spark.sql("SELECT product, category,FROM (SELECT product, category, revenue, dense_rank() OVER (PARTITION BY category ORDER BY revenue DESC) as rank FROM productRevenue)")
+
+
+
     val results = filteredPeople.collect()
 
     results.foreach(println)

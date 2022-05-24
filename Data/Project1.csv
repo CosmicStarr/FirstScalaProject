@@ -1,8 +1,8 @@
 OrderId,CusId,CustomerName,ProductID,ProductName,Category,ProductPrice,Qty,PayType,Valid,DatePurchased,Country,Website
-592,32,Kliff Undersn,7,IPhone 13,Phones,1299,2,Internet Banking,Invalid,2021-04-06,Tobago,www.Samsung.com																									
-1350,14,McKenzie Phoenix,10,Sony Home theater,Home theater,499,2,Internet Banking,Invalid,2019-11-24,Congo,www.Amazon.com																									
-3390,56,Harper Gene,12,Xbox Series X,Video games,599,2,Check,Valid,2021-10-24,Botswana,www.Wal-Mart.com																									
-5677,36,Rudy Derr,8,Beats Headphones,Headphones,399,1,Internet Banking,Valid,2020-09-05,Singapore,www.Amazon.com																									
+592,32,Kliff Undersn,7,IPhone 13,Phones,1299,2,Internet Banking,Invalid,2021-04-06,Tobago,www.Samsung.com
+1350,14,McKenzie Phoenix,10,Sony Home theater,Home theater,499,2,Internet Banking,Invalid,2019-11-24,Congo,www.Amazon.com
+3390,56,Harper Gene,12,Xbox Series X,Video games,599,2,Check,Valid,2021-10-24,Botswana,www.Wal-Mart.com
+5677,36,Rudy Derr,8,Beats Headphones,Headphones,399,1,Internet Banking,Valid,2020-09-05,Singapore,www.Amazon.com
 4484,57,Evelyn Michels,5,Sony Speakers,Audio,299,1,Card,Valid,2020-11-15,Algeria,www.Wal-Mart.com																									
 773,39,Zangieff Russ,12,Xbox Series X,Video games,599,2,Check,Valid,2021-10-14,Indonesia,www.Wal-Mart.com																									
 8988,54,Luna Starr,33,Hamilton Beach Microwave,Appliances,79,1,Check,Valid,2019-11-16,Cameroon,www.Samsung.com																									
