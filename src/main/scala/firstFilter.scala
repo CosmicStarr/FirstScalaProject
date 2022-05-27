@@ -1,10 +1,13 @@
 //import org.apache.hive._
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
+
+
+import scala.io.StdIn.readInt
 object firstFilter {
 
-  case class Customer(OrderId:Int,CusId:Int,CustomerName:String,ProductName:String,Category:String,ProductPrice:Int,Qty:Double,
-                      PayType:String,Valid:String,DatePurchased:String,Country:String,Website:String)
+  case class Customer(OrderId:Int,CusId:Int,CustomerName:String,ProductName:String,CatID:Int,Category:String,ProductPrice:Int,Qty:Int,
+                      PayType:String,Valid:String,DatePurchased:String,CountryID:Int,Country:String,Website:String)
 
   def parseLine(line: String): (String, String) = {
     // Split by commas
@@ -38,20 +41,76 @@ object firstFilter {
 
 
 //    Customers.printSchema()
-//
-    Customers.createOrReplaceTempView("people")
-    //first Query
-//    val TopCategoryPerCountry =  spark.sql("SELECT count(ProductName),max(ProductName),Country FROM people as purchases GROUP BY Country")
+
+      Menus.WelcomeText()
+      println("Choose:")
+      var options = readInt()
+      println($"You Chose : ${options}")
+      while (options != 0){
+      if (options == 2){
+        println("Available Options")
+        Menus.Queries()
+        println("Choose:")
+        var options1 = readInt()
+        println(s"You Chose : ${options1}")
+        if(options1 == 1){
+          while (options1 != 0){
+            println("Initializing...")
+            Customers.createOrReplaceTempView("people")
+            println("Get Ready to Query the world!")
+            //first Query I have to fix it. i need to give the categories IDs
+            val TopCategoryPerCountry = Customers.select("Category","Country","ProductPrice")
+            TopCategoryPerCountry.groupBy("Category","Country").sum("ProductPrice").sort("Country").toDF().show()
+            Menus.Queries()
+            println(s"What else do you want to do? Choose an Option =>")
+            options1 = readInt()
+            if(options1 == 2){
+              options = 2
+              options1 = 0
+            }
+            else if(options1 == 0){
+              Menus.HomeMenu()
+              println("Choose:")
+              options = readInt()
+              println($"You Chose : ${options}")
+            }
+            else {
+              println("Invalid")
+            }
+          }
+        }
+      }
+    }
+    println("Thank you for visiting BigCosmicData")
+
+
+
+
     //second Query
-//    val PopularProducts = spark.sql("SELECT ProductName,DatePurchased,Country FROM people WHERE DatePurchased LIKE '2022%' SORT By DatePurchased ASC")
-//    val results = PopularProducts.groupBy("ProductName","Country").count().collect()
+//    val PopularProducts1 = spark.sql("SELECT * FROM people WHERE DatePurchased LIKE '2022%' SORT By DatePurchased ASC")
+//    PopularProducts.groupBy("ProductName","Country").count().show(50)
+//    val PopularProducts2 = spark.sql("SELECT * FROM people WHERE DatePurchased LIKE '2021%' SORT By DatePurchased ASC")
+//    PopularProducts2.groupBy("ProductName","Qty","Country").count().sort("Country").show(50)
+//      val PopularProducts3 = spark.sql("SELECT ProductName,Country FROM people WHERE DatePurchased LIKE '2019%' SORT By DatePurchased ASC")
+//      PopularProducts3.groupBy("ProductName","Country").count().show(50)
 
     //3rd Query
-//    val firstHiveQuery = spark.sql("SELECT ProductPrice,Country FROM people Order By ProductPrice DESC")
-//    firstHiveQuery.groupBy("Country").sum("ProductPrice").sort($"sum(ProductPrice)".desc).show(1)
+//    select country, max(sqty)
+//    select country, max(sqty)
+//    from Project1
+//      group by country;
 
-//    results.foreach(println)
+
+
+    //    val firstHiveQuery = spark.sql("SELECT * FROM people")
+//    firstHiveQuery.groupBy("Country").sum("ProductPrice").sort($"sum(ProductPrice)".desc).show()
+    //4th Query
+//    val firstHiveQuery2 = spark.sql("SELECT * FROM people")
+//    firstHiveQuery2.groupBy("DatePurchased","Country").sum("ProductPrice").sort($"sum(ProductPrice)".desc).show()
+
+//    TopCategoryPerCountry.foreach(println)
 //    results1.foreach(println)
+
     spark.stop()
   }
 }

@@ -3,9 +3,9 @@ import scala.util.Random
 
 object generator {
   def main(args: Array[String]): Unit ={
-    println("OrderId","CusId","CustomerName","ProductID","ProductName","Category","ProductPrice","Qty","PayType","Valid","DatePurchased","Country","Website")
+//    println("OrderId","CusId","CustomerName","ProductID","ProductName","CatID","Category","ProductPrice","Qty","PayType","Valid","DatePurchased","CountryID","Country","Website")
     var generate = 0
-    while (generate < 5000){
+    while (generate > 5000){
       val orderId = 1 to 10000
 //      val productId = 10000 to 30000
 //      val productPrice = 299 to 1299
@@ -14,15 +14,15 @@ object generator {
       val end   = LocalDate.of(2022, 6, 24)
       val webSites = List("www.Amazon.com","www.Wal-Mart.com","www.Samsung.com")
       val valid = List("Invalid","Valid")
-      val productNames = List((1,"Samsung Tablet","Tablets",299),(2,"S21 cell phone","Phones",1299),(3,"Sony Desktop","Computers",599),
-        (4,"Dell Computer","Computers",599),(5,"Sony Speakers","Audio",299),(6,"Sony Phone","Phones",1199),(7,"IPhone 13","Phones",1299),(8,"Beats Headphones","Headphones",399),
-      (9,"Sony Headphones","Headphones",399),(10,"Sony Home theater","Home theater",499),(11,"Hp Compaq Monitor","Computers",499),(12,"Xbox Series X","Video games",599),
-        (13,"Sony PlayStation 5","Video games",499),(14,"Xbox Series S","Video games",499),(15,"Tozo Wireless Earbubs","Headphones",29),(16,"Airpods","Headphones",199),
-      (17,"Sony External Hard drive","Computers",99),(18,"Sony Router","Computers",99),(19,"Sony FlatScreen TV","TV's",1199),(20,"Sony PlayStation 4","Video games",299),
-        (21,"S22 cell phone","Phones",1299),(22,"IPhone 14","Phones",1299),(23,"Vizio TV","TV's",199),(24,"PlayStation Controller","Video games",49),
-        (25,"Xbox Controller","Video games",49),(26,"Optiplex 990 Desktop","Computers",499),(27,"Samsung Refrigerator","Appliances",599),(28,"Whirlpool dishwasher","Appliances",799),
-        (29,"Samsung Washer","Appliances",799),(30,"Samsung Dryer","Appliances",799),(31,"Maytag Washer","Appliances",899),(32,"Samsung Stove","Appliances",699),
-        (33,"Hamilton Beach Microwave","Appliances",79))
+      val productNames = List((1,"Samsung Tablet",(1,"Tablets"),299),(2,"S21 cell phone",(2,"Phones"),1299),(3,"Sony Desktop",(3,"Computers"),599),
+        (4,"Dell Computer",(3,"Computers"),599),(5,"Sony Speakers",(4,"Audio"),299),(6,"Sony Phone",(2,"Phones"),1199),(7,"IPhone 13",(2,"Phones"),1299),(8,"Beats Headphones",(5,"Headphones"),399),
+      (9,"Sony Headphones",(5,"Headphones"),399),(10,"Sony Home theater",(6,"Home theater"),499),(11,"Hp Compaq Monitor",(3,"Computers"),499),(12,"Xbox Series X",(7,"Video games"),599),
+        (13,"Sony PlayStation 5",(7,"Video games"),499),(14,"Xbox Series S",(7,"Video games"),499),(15,"Tozo Wireless Earbubs",(5,"Headphones"),29),(16,"Airpods",(5,"Headphones"),199),
+      (17,"Sony External Hard drive",(3,"Computers"),99),(18,"Sony Router",(3,"Computers"),99),(19,"Sony FlatScreen TV",(9,"TV's"),1199),(20,"Sony PlayStation 4",(7,"Video games"),299),
+        (21,"S22 cell phone",(2,"Phones"),1299),(22,"IPhone 14",(2,"Phones"),1299),(23,"Vizio TV",(9,"TV's"),199),(24,"PlayStation Controller",(7,"Video games"),49),
+        (25,"Xbox Controller",(7,"Video games"),49),(26,"Optiplex 990 Desktop",(3,"Computers"),499),(27,"Samsung Refrigerator",(8,"Appliances"),599),(28,"Whirlpool dishwasher",(8,"Appliances"),799),
+        (29,"Samsung Washer",(8,"Appliances"),799),(30,"Samsung Dryer",(8,"Appliances"),799),(31,"Maytag Washer",(8,"Appliances"),899),(32,"Samsung Stove",(8,"Appliances"),699),
+        (33,"Hamilton Beach Microwave",(8,"Appliances"),79))
       val paymentType = List("Card", "Check", "Internet Banking")
       val customerNames = List((1,"Normand Michel"), (2,"Danny hue"), (3,"Jerry Jean"),
        (4,"Ken Masters"), (5,"Micheal Gus"), (6,"Michelle Otter"), (7,"Morgan Freeman"), (8,"Sherrell Lattes"),
@@ -35,12 +35,13 @@ object generator {
         (55,"Camila Grant"),(56,"Harper Gene"),(57,"Evelyn Michels"),(58,"Mia pena"),(59,"Isabella Willford"),(60,"Amelia Crawford"),(61,"Charlotte Hanson"),(62,"Emma Streak"),
         (63,"Oliva Gems"),(64,"Nova Williow"),(65,"Aurora Grace"),(66,"Jean Hazel"),(67,"Lillian Cruz"),(68,"Addison Leah"),(69,"Marc Galdson"),(70,"Gemina Zoe"),
         (71,"Elcy Jean"),(72,"Paisley Everly"),(73,"Erick Manison"))
-      val countries = List("Afghanistan","Albania","Algeria","Andorra","Angola","Antigua","Barbuda","Argentina","Armenia","Austria",
-        "Azerbaijan","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia","Herzegovina","Botswana",
-        "Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Verde","Cambodia","Cameroon","Canada","Central African Republic","Channel Islands",
-          "Chile","China","Colombia","Comoros","Congo","Congo","Germany","Hong Kong","Hungary","India","Indonesia","Italy","Japan","North Korea",
-        "Philippines","Portugal","Romania","Russia","Singapore","South Africa","Togo","Trinidad","Tobago","Tunisia","Turkey","Ukraine","United Arab Emirates",
-        "United Kingdom","United States")
+      val countries = List((1,"Afghanistan"),(2,"Albania"),(3,"Algeria"),(4,"Andorra"),(5,"Angola"),(5,"Antigua"),(6,"Barbuda"),(7,"Argentina"),(8,"Armenia"),(9,"Austria"),
+        (10,"Azerbaijan"),(11,"Bahrain"),(12,"Bangladesh"),(13,"Barbados"),(14,"Belarus"),(15,"Belgium"),(16,"Belize"),(17,"Benin"),(18,"Bhutan"),(19,"Bolivia"),(20,"Bosnia"),
+        (22,"Herzegovina"),(23,"Botswana"),(24,"Brazil"),(25,"Brunei"),(26,"Bulgaria"),(27,"Burkina Faso"),(28,"Burundi"),(29,"Verde"),(30,"Cambodia"),(31,"Cameroon"),(32,"Canada"),
+        (33,"Central African Republic"),(34,"Channel Islands"),(35,"Chile"),(36,"China"),(37,"Colombia"),(38,"Comoros"),(39,"Congo"),(40,"Congo"),(41,"Germany"),(42,"Hong Kong"),(43,"Hungary"),
+        (44,"India"),(45,"Indonesia"),(46,"Italy"),(47,"Japan"),(48,"North Korea"),
+        (49,"Philippines"),(50,"Portugal"),(51,"Romania"),(52,"Russia"),(53,"Singapore"),(54,"South Africa"),(55,"Togo"),(56,"Trinidad"),(57,"Tobago"),(58,"Tunisia"),(59,"Turkey"),
+        (60,"Ukraine"),(61,"United Arab Emirates"),(62,"United Kingdom"),(63,"United States"))
       //the tuple fields i can actually create a match method
       val newIDs = orderId(Random.nextInt(orderId.length))
       val newNames = customerNames(Random.nextInt(customerNames.length))
