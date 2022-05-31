@@ -5,7 +5,7 @@ object generator {
   def main(args: Array[String]): Unit ={
 //    println("OrderId","CusId","CustomerName","ProductID","ProductName","CatID","Category","ProductPrice","Qty","PayType","Valid","DatePurchased","CountryID","Country","Website")
     var generate = 0
-    while (generate > 5000){
+    while (generate < 5000){
       val orderId = 1 to 10000
 //      val productId = 10000 to 30000
 //      val productPrice = 299 to 1299
