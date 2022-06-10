@@ -7,8 +7,7 @@ Terminal command line app that will allow users to query about 10k records with 
 ## Technologies
 - Scala
 - Apache Spark
-- Vegas for Scala and Spark
-- JDK 1.8
+- Vegas for Scala
 - IntelliJ
 
 ## Features
