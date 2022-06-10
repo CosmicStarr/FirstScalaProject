@@ -28,7 +28,7 @@ Getting Started =>
 
 Usage=>
 
-Once you download Intellij, Unzip the project file and open it with Intellij. Run the firstFilter class and the project should start boot up. 
+Once you download Intellij, Unzip the project file and open it with Intellij. Run the firstFilter class and the project should boot up. 
 
 Contributors=>
 
